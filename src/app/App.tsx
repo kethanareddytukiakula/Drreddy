@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Menu, X, GraduationCap, BookOpen, Award } from 'lucide-react';
 import { motion } from 'motion/react';
+import daddyImage from './assets/daddy.jpg';
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,31 +24,30 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/80 backdrop-blur-sm shadow-sm'
+        scrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="font-semibold text-lg text-blue-900"
+              className="font-bold text-lg text-gray-900 tracking-tight"
             >
-              Prof. T. Madhusudana Reddy
+              T. Madhusudana Reddy
             </motion.div>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-12">
               {['home', 'about', 'research', 'publications', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 capitalize relative group"
+                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200 capitalize text-sm font-medium tracking-wide"
                 >
                   {section}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-200 group-hover:w-full" />
                 </button>
               ))}
             </div>
@@ -85,82 +85,71 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section id="home" className="pt-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               className="order-2 md:order-1"
             >
-              <div className="mb-6">
-                <span className="inline-block px-5 py-2 bg-blue-600 text-white rounded-full text-sm font-medium shadow-lg">
-                  Professor of Chemistry
-                </span>
-              </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                Prof. T. Madhusudana Reddy
+              <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+                <span className="bg-gradient-to-r from-gray-900 to-black bg-clip-text text-transparent">Prof. T. Madhusudana Reddy</span>
               </h1>
-              <div className="space-y-3 text-gray-700 mb-8">
-                <p className="text-xl font-semibold text-gray-800">Ph.D., PDF (France), UGC-Raman Fellow (USA)</p>
-                <p className="text-lg text-blue-700 font-semibold">Electrochemical Research Laboratory</p>
-                <p className="text-gray-600 text-lg">Department of Chemistry</p>
-                <p className="text-gray-600">S. V. U. College of Sciences</p>
-                <p className="text-gray-600">Sri Venkateswara University</p>
+              <div className="space-y-4 mb-10">
+                <div className="flex items-center gap-3">
+                  <p className="text-2xl font-medium text-gray-700">Professor of Chemistry</p>
+                  <span className="ml-4 inline-block bg-gray-900 text-white text-xs px-3 py-1 rounded-full">Electrochemical</span>
+                </div>
+                <p className="text-lg text-gray-600">Ph.D., PDF (France), UGC-Raman Fellow (USA)</p>
+                <div className="pt-4 border-t border-gray-200">
+                  <p className="text-gray-700 font-medium mb-2">Electrochemical Research Laboratory</p>
+                  <p className="text-gray-600">Department of Chemistry</p>
+                  <p className="text-gray-600">S. V. U. College of Sciences</p>
+                  <p className="text-gray-600">Sri Venkateswara University, Tirupati</p>
+                </div>
               </div>
               <div className="flex flex-wrap gap-4">
-                <a
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   href="https://scholar.google.com/citations?user=fDrpWdkAAAAJ&hl=en&oi=ao"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white rounded-md hover:shadow-xl transition-all duration-300 font-medium text-sm ring-1 ring-black/10"
                 >
-                  <GraduationCap size={20} />
+                  <GraduationCap size={18} />
                   Google Scholar
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   href="https://svuniversity.edu.in/college_of_science/dr-t-madhusudana-reddy-2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition-all duration-300 font-medium text-sm shadow-sm"
                 >
                   <ExternalLink size={18} />
                   University Profile
-                </a>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-                >
-                  Get in Touch
-                </button>
+                </motion.a>
               </div>
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="flex justify-center order-1 md:order-2"
             >
-              <div className="relative">
-                <div className="w-80 h-80 md:w-96 md:h-96 rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 border-4 border-white">
+              <div className="relative w-80 md:w-96">
+                <div className="rounded-lg shadow-xl overflow-hidden bg-white border border-gray-100">
                   <img 
-                    src="https://images.unsplash.com/photo-1659353887617-8cf154b312c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBwcm9mZXNzb3IlMjBzY2llbnRpc3QlMjBjaGVtaXN0cnklMjBsYWIlMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcwNTI2NjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                    src={daddyImage}
                     alt="Prof. T. Madhusudana Reddy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto object-contain"
                   />
                 </div>
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-4 -right-4 w-28 h-28 bg-yellow-400 rounded-full opacity-80 blur-xl"
-                />
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-4 -left-4 w-20 h-20 bg-green-400 rounded-full opacity-60 blur-xl"
-                />
               </div>
             </motion.div>
           </div>
@@ -168,26 +157,27 @@ export default function App() {
       </section>
 
       {/* Quick Stats */}
-      <section className="bg-white py-16 border-y border-gray-200">
+      <section className="bg-gray-50 py-20 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '21', label: 'Years Research', icon: '🔬' },
-              { value: '73', label: 'Publications', icon: '📚' },
-              { value: '10', label: 'Degrees Awarded', icon: '🎓' },
-              { value: '19', label: 'Years Teaching', icon: '👨‍🏫' }
+              { value: '21', label: 'Years Research' },
+              { value: '73', label: 'Publications' },
+              { value: '10', label: 'Degrees Awarded' },
+              { value: '19', label: 'Years Teaching' }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                className="text-center"
               >
-                <div className="text-4xl mb-2">{stat.icon}</div>
-                <div className="text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
-                <div className="text-gray-700 font-medium">{stat.label}</div>
+                <div className="text-5xl font-bold mb-2">
+                  <span className="inline-block bg-gray-900 text-white px-4 py-2 rounded-md">{stat.value}</span>
+                </div>
+                <div className="text-gray-600 font-medium text-sm tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -195,102 +185,77 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-slate-100">
+      <section id="about" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              About
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
-            </h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-2">Background</h2>
+            <div className="w-12 h-1 bg-gray-900" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto space-y-6"
           >
-            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100">
-              <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                Prof. T. Madhusudana Reddy is a distinguished Professor in the Department of Chemistry at Sri Venkateswara University, Tirupati, Andhra Pradesh, India. He obtained his M.Sc degree in 1999 with Physical Chemistry as specialization and later carried his research on "Chemically modified electrodes" for obtaining his Ph.D degree in the year 2005.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                Prof. Reddy teaches Electrochemistry to the PG students and his research mainly focuses in the field of Electrochemistry. Presently he is working on Electrochemical sensors and Biosensors. He has published 73 research articles in international journals and has 21 years of research and 19 years of teaching experience.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                During 2005-2007, he worked as Postdoctoral Researcher at "Chimie, Electrochimie Moléculaires et Chimie Analytique" CNRS, UMR 6521, Université de Bretagne Occidentale, Brest, France. During 2015-2016, he was awarded with Raman Fellowship by UGC to visit USA to carry out research at the Department of Chemistry, University of Minnesota, Minneapolis, USA.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                He visited France, Spain and USA for attending conferences. He has successfully completed two major research projects (UGC-MRP and DST-Fast Track Project).
-              </p>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                Under his guidance 9 Ph.D's and 1 M.Phil. degrees were awarded. Presently seven Ph.D scholars and two M.Phil. students are working for their degrees under his supervision.
-              </p>
-            </div>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              Prof. T. Madhusudana Reddy is a distinguished Professor in the Department of Chemistry at Sri Venkateswara University, Tirupati, Andhra Pradesh, India. He obtained his M.Sc degree in 1999 with Physical Chemistry as specialization and later carried his research on "Chemically modified electrodes" for obtaining his Ph.D degree in 2005.
+            </p>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              Prof. Reddy teaches Electrochemistry to PG students, with research focus in electrochemical sensors and biosensors. He has published 73 research articles in international journals and brings 21 years of research and 19 years of teaching experience.
+            </p>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              During 2005-2007, he served as Postdoctoral Researcher at CNRS, Université de Bretagne Occidentale, Brest, France. In 2015-2016, the UGC awarded him a Raman Fellowship to conduct research at the University of Minnesota, Minneapolis, USA.
+            </p>
+            <p className="text-gray-700 leading-relaxed text-lg">
+              He has successfully completed two major research projects (UGC-MRP and DST-Fast Track Project) and has participated in international conferences in France, Spain, and the USA. Under his guidance, 9 Ph.D and 1 M.Phil degrees have been awarded, with 7 Ph.D scholars and 2 M.Phil students currently pursuing their degrees.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Research Interests Section */}
-      <section id="research" className="py-20 bg-white">
+      <section id="research" className="py-32 bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              Research Interests
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
-            </h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-2">Research Interests</h2>
+            <div className="w-12 h-1 bg-gray-900" />
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: '⚡',
                 title: 'Electrochemical Sensors',
-                desc: 'Development of novel electrochemical sensors for detection of environmental pollutants and biomarkers.',
-                gradient: 'from-blue-50 to-blue-100',
-                iconBg: 'bg-blue-600'
+                desc: 'Development of novel electrochemical sensors for detection of environmental pollutants and biomarkers.'
               },
               {
-                icon: '🧬',
                 title: 'Biosensors',
-                desc: 'Design and fabrication of biosensors for medical diagnostics and food safety applications.',
-                gradient: 'from-green-50 to-green-100',
-                iconBg: 'bg-green-600'
+                desc: 'Design and fabrication of biosensors for medical diagnostics and food safety applications.'
               },
               {
-                icon: '🔋',
                 title: 'Battery Materials',
-                desc: 'Research on advanced materials for battery applications and energy storage systems.',
-                gradient: 'from-purple-50 to-purple-100',
-                iconBg: 'bg-purple-600'
+                desc: 'Research on advanced materials for battery applications and energy storage systems.'
               },
               {
-                icon: '⚛️',
                 title: 'Nanomaterials',
-                desc: 'Synthesis and characterization of nanomaterials for electrochemical applications.',
-                gradient: 'from-yellow-50 to-yellow-100',
-                iconBg: 'bg-yellow-600'
+                desc: 'Synthesis and characterization of nanomaterials for electrochemical applications.'
               },
               {
-                icon: '🌍',
                 title: 'Environmental Analysis',
-                desc: 'Electrochemical methods for environmental monitoring and pollution control.',
-                gradient: 'from-red-50 to-red-100',
-                iconBg: 'bg-red-600'
+                desc: 'Electrochemical methods for environmental monitoring and pollution control.'
               },
               {
-                icon: '💊',
                 title: 'Pharmaceutical Analysis',
-                desc: 'Electroanalytical techniques for pharmaceutical drug analysis and quality control.',
-                gradient: 'from-indigo-50 to-indigo-100',
-                iconBg: 'bg-indigo-600'
+                desc: 'Electroanalytical techniques for pharmaceutical drug analysis and quality control.'
               }
             ].map((item, index) => (
               <motion.div
@@ -299,14 +264,11 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className={`bg-gradient-to-br ${item.gradient} rounded-2xl p-7 hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-200`}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-lg p-6 border border-gray-200 border-l-4 border-gray-900 hover:shadow-lg transition-all duration-300"
               >
-                <div className={`w-14 h-14 ${item.iconBg} rounded-xl flex items-center justify-center mb-5 shadow-lg`}>
-                  <span className="text-white text-3xl">{item.icon}</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -314,57 +276,51 @@ export default function App() {
       </section>
 
       {/* Academic Background Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-slate-100">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              Academic Background
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
-            </h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-2">Academic Background</h2>
+            <div className="w-12 h-1 bg-gray-900" />
           </motion.div>
           <div className="max-w-3xl mx-auto">
-            <div className="space-y-6">
+            <div className="space-y-4">
               {[
                 {
-                  icon: 'P',
                   title: 'Professor',
                   subtitle: 'Department of Chemistry, Sri Venkateswara University',
                   location: 'Tirupati, Andhra Pradesh, India',
                   extra: 'Electrochemical Research Laboratory',
-                  color: 'blue'
+                  year: 'Present'
                 },
                 {
-                  icon: 'RF',
-                  title: 'UGC-Raman Fellow (2015-2016)',
+                  title: 'UGC-Raman Fellow',
                   subtitle: 'Department of Chemistry, University of Minnesota',
                   location: 'Minneapolis, USA',
-                  color: 'green'
+                  year: '2015-2016'
                 },
                 {
-                  icon: 'PDF',
-                  title: 'Postdoctoral Researcher (2005-2007)',
+                  title: 'Postdoctoral Researcher',
                   subtitle: 'CNRS, UMR 6521, Université de Bretagne Occidentale',
                   location: 'Brest, France',
                   extra: 'Chimie, Electrochimie Moléculaires et Chimie Analytique',
-                  color: 'purple'
+                  year: '2005-2007'
                 },
                 {
-                  icon: 'PhD',
-                  title: 'Doctor of Philosophy (2005)',
-                  subtitle: 'Chemistry',
+                  title: 'Doctor of Philosophy (Chemistry)',
+                  subtitle: 'Sri Venkateswara University',
                   location: 'Research on "Chemically modified electrodes"',
-                  color: 'yellow'
+                  year: '2005'
                 },
                 {
-                  icon: 'MSc',
-                  title: 'Master of Science (1999)',
-                  subtitle: 'Chemistry',
+                  title: 'Master of Science (Chemistry)',
+                  subtitle: 'Sri Venkateswara University',
                   location: 'Specialization in Physical Chemistry',
-                  color: 'orange'
+                  year: '1999'
                 }
               ].map((item, index) => (
                 <motion.div
@@ -373,20 +329,15 @@ export default function App() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 border-l-4 border-${item.color}-600 transition-all duration-300`}
+                  className="bg-white border-l-4 border-gray-900 pl-6 p-5 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className={`w-14 h-14 bg-${item.color}-100 rounded-full flex items-center justify-center flex-shrink-0 shadow-md`}>
-                      <span className={`text-${item.color}-600 text-lg font-bold`}>{item.icon}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-gray-900 mb-2 text-lg">{item.title}</h3>
-                      <p className="text-gray-700 mb-1">{item.subtitle}</p>
-                      <p className="text-gray-600 text-sm">{item.location}</p>
-                      {item.extra && <p className="text-gray-600 text-sm mt-1">{item.extra}</p>}
-                    </div>
+                  <div className="flex justify-between items-start gap-4 mb-2">
+                    <h3 className="font-bold text-gray-900 text-lg">{item.title}</h3>
+                    <span className="text-xs font-medium text-gray-500 whitespace-nowrap">{item.year}</span>
                   </div>
+                  <p className="text-gray-700 font-medium mb-1 text-sm">{item.subtitle}</p>
+                  <p className="text-gray-600 text-sm">{item.location}</p>
+                  {item.extra && <p className="text-gray-600 text-sm mt-2">{item.extra}</p>}
                 </motion.div>
               ))}
             </div>
@@ -395,55 +346,51 @@ export default function App() {
       </section>
 
       {/* Publications Section */}
-      <section id="publications" className="py-20 bg-white">
+      <section id="publications" className="py-32 bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              Publications & Research Projects
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
-            </h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-2">Publications & Research</h2>
+            <div className="w-12 h-1 bg-gray-900" />
           </motion.div>
           <div className="max-w-4xl mx-auto space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100"
+              className="bg-white rounded-lg p-8 border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <BookOpen className="text-blue-600" size={28} />
-                <h3 className="text-2xl font-bold text-gray-900">Research Publications</h3>
-              </div>
-              <p className="text-gray-700 mb-4 text-lg leading-relaxed">
-                Prof. T. Madhusudana Reddy has published 73 research articles in leading international journals in the field of electrochemistry, analytical chemistry, and nanomaterials.
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Research Publications</h3>
+              <p className="text-gray-700 mb-4 text-base leading-relaxed">
+                Prof. T. Madhusudana Reddy has published 73 research articles in leading international journals in the field of electrochemistry, analytical chemistry, and nanomaterials. His work spans electrochemical sensors, biosensors, and advanced materials.
               </p>
-              <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                His research papers have been cited numerous times, reflecting the significant impact of his work on the scientific community.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
+              <div className="flex flex-wrap gap-3">
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   href="https://scholar.google.com/citations?user=fDrpWdkAAAAJ&hl=en&oi=ao"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-5 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-all duration-300 font-medium text-sm"
                 >
-                  <GraduationCap size={20} />
-                  View on Google Scholar
-                </a>
-                <a
+                  <GraduationCap size={16} />
+                  Google Scholar
+                </motion.a>
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   href="https://svuniversity.edu.in/college_of_science/dr-t-madhusudana-reddy-2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-5 py-2 border-2 border-gray-900 text-gray-900 rounded-md hover:bg-gray-900 hover:text-white transition-all duration-300 font-medium text-sm"
                 >
-                  <ExternalLink size={18} />
-                  Complete Publications
-                </a>
+                  <ExternalLink size={16} />
+                  University Profile
+                </motion.a>
               </div>
             </motion.div>
 
@@ -451,17 +398,13 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-green-100"
+              className="bg-white rounded-lg p-8 border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <Award className="text-green-600" size={28} />
-                <h3 className="text-2xl font-bold text-gray-900">Major Research Projects</h3>
-              </div>
-              <div className="space-y-5">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Research Projects</h3>
+              <div className="space-y-4">
                 {[
-                  { name: 'UGC Major Research Project', status: 'Successfully completed' },
-                  { name: 'DST-Fast Track Project', status: 'Successfully completed' }
+                  { name: 'UGC Major Research Project', status: 'Completed' },
+                  { name: 'DST-Fast Track Project', status: 'Completed' }
                 ].map((project, index) => (
                   <motion.div
                     key={project.name}
@@ -469,14 +412,12 @@ export default function App() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4 bg-white rounded-xl p-5 shadow-md"
+                    className="flex items-start gap-4 pb-4 border-b border-gray-100 last:border-b-0"
                   >
-                    <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
-                      <span className="text-white text-sm font-bold">{index + 1}</span>
-                    </div>
+                    <div className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
                     <div>
-                      <p className="font-bold text-gray-900 text-lg">{project.name}</p>
-                      <p className="text-green-700 text-sm font-medium">{project.status}</p>
+                      <p className="font-bold text-gray-900">{project.name}</p>
+                      <p className="text-gray-600 text-sm">{project.status}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -487,105 +428,82 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100"
+              className="bg-white rounded-lg p-8 border border-gray-200 hover:shadow-lg transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                🎓 Student Guidance
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                  <p className="text-5xl font-bold text-purple-600 mb-3">10</p>
-                  <p className="text-gray-900 font-bold text-lg">Degrees Awarded</p>
-                  <p className="text-sm text-gray-600 mt-2">9 Ph.D & 1 M.Phil.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Student Guidance</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <p className="text-5xl font-bold text-gray-900 mb-2">10</p>
+                  <p className="text-gray-700 font-medium mb-1">Degrees Awarded</p>
+                  <p className="text-gray-600 text-sm">9 Ph.D & 1 M.Phil</p>
                 </div>
-                <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                  <p className="text-5xl font-bold text-purple-600 mb-3">9</p>
-                  <p className="text-gray-900 font-bold text-lg">Currently Guiding</p>
-                  <p className="text-sm text-gray-600 mt-2">7 Ph.D & 2 M.Phil. scholars</p>
+                <div>
+                  <p className="text-5xl font-bold text-gray-900 mb-2">9</p>
+                  <p className="text-gray-700 font-medium mb-1">Currently Guiding</p>
+                  <p className="text-gray-600 text-sm">7 Ph.D & 2 M.Phil scholars</p>
                 </div>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-orange-100"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                🌍 International Conferences
-              </h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Prof. Reddy has participated in several international conferences, visiting France, Spain, and the USA to present his research and collaborate with international researchers in the field of electrochemistry.
-              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-slate-100">
+      <section id="contact" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-              Contact Information
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full" />
-            </h2>
+            <h2 className="text-5xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+            <div className="w-12 h-1 bg-gray-900" />
           </motion.div>
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl shadow-xl hover:shadow-2xl p-8 transition-all duration-300 border border-gray-100"
+              className="space-y-6"
             >
-              <h3 className="font-bold text-gray-900 mb-6 text-2xl">Get in Touch</h3>
-              <div className="space-y-5">
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors">
-                  <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
-                    <Phone size={22} className="text-white" />
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Details</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-900 rounded-md flex items-center justify-center flex-shrink-0">
+                    <Phone size={20} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1 font-medium">Phone</p>
-                    <a href="tel:+919441088587" className="text-gray-900 hover:text-blue-600 font-semibold text-lg">
+                    <p className="text-sm text-gray-600 font-medium mb-1">Phone</p>
+                    <a href="tel:+919441088587" className="text-gray-900 hover:text-gray-600 font-semibold transition-colors">
                       +91-9441088587
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-green-50 hover:bg-green-100 transition-colors">
-                  <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
-                    <Mail size={22} className="text-white" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-900 rounded-md flex items-center justify-center flex-shrink-0">
+                    <Mail size={20} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1 font-medium">Email</p>
-                    <a href="mailto:tmsreddysvu@gmail.com" className="text-gray-900 hover:text-green-600 font-semibold break-all">
+                    <p className="text-sm text-gray-600 font-medium mb-1">Email</p>
+                    <a href="mailto:tmsreddysvu@gmail.com" className="text-gray-900 hover:text-gray-600 font-semibold break-all transition-colors">
                       tmsreddysvu@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-purple-50 hover:bg-purple-100 transition-colors">
-                  <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
-                    <ExternalLink size={22} className="text-white" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-gray-900 rounded-md flex items-center justify-center flex-shrink-0">
+                    <MapPin size={20} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1 font-medium">University Profile</p>
-                    <a
-                      href="https://svuniversity.edu.in/college_of_science/dr-t-madhusudana-reddy-2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-900 hover:text-purple-600 font-semibold"
-                    >
-                      View Profile
-                    </a>
+                    <p className="text-sm text-gray-600 font-medium mb-2">Office Address</p>
+                    <p className="text-gray-900 font-medium">Electrochemical Research Laboratory</p>
+                    <p className="text-gray-600 text-sm">Department of Chemistry</p>
+                    <p className="text-gray-600 text-sm">S. V. U. College of Sciences</p>
+                    <p className="text-gray-600 text-sm">Sri Venkateswara University</p>
+                    <p className="text-gray-600 text-sm">Tirupati - 517502, India</p>
                   </div>
                 </div>
               </div>
@@ -595,22 +513,37 @@ export default function App() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl shadow-xl hover:shadow-2xl p-8 transition-all duration-300 border border-gray-100"
+              className="bg-gray-50 rounded-lg p-8 border border-gray-200"
             >
-              <h3 className="font-bold text-gray-900 mb-6 text-2xl">Office Address</h3>
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-red-50">
-                <div className="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
-                  <MapPin size={22} className="text-white" />
-                </div>
-                <div className="text-gray-700 leading-relaxed">
-                  <p className="font-bold mb-3 text-lg text-gray-900">Electrochemical Research Laboratory</p>
-                  <p className="mb-1">Department of Chemistry</p>
-                  <p className="mb-1">S. V. U. College of Sciences</p>
-                  <p className="mb-1">Sri Venkateswara University</p>
-                  <p className="mb-1 font-semibold text-gray-900">Tirupati - 517502</p>
-                  <p className="font-semibold text-gray-900">Andhra Pradesh, INDIA</p>
-                </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Quick Links</h3>
+              <div className="space-y-4">
+                <motion.a
+                  whileHover={{ x: 4 }}
+                  href="https://scholar.google.com/citations?user=fDrpWdkAAAAJ&hl=en&oi=ao"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 bg-white rounded-md hover:shadow-md transition-all duration-300 border border-gray-100"
+                >
+                  <div className="flex items-center gap-3">
+                    <GraduationCap size={20} className="text-gray-900" />
+                    <span className="font-medium text-gray-900">Google Scholar</span>
+                  </div>
+                  <ExternalLink size={16} className="text-gray-400" />
+                </motion.a>
+
+                <motion.a
+                  whileHover={{ x: 4 }}
+                  href="https://svuniversity.edu.in/college_of_science/dr-t-madhusudana-reddy-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 bg-white rounded-md hover:shadow-md transition-all duration-300 border border-gray-100"
+                >
+                  <div className="flex items-center gap-3">
+                    <BookOpen size={20} className="text-gray-900" />
+                    <span className="font-medium text-gray-900">University Profile</span>
+                  </div>
+                  <ExternalLink size={16} className="text-gray-400" />
+                </motion.a>
               </div>
             </motion.div>
           </div>
@@ -618,25 +551,47 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-gray-900 to-slate-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-16 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-12 mb-12 pb-12 border-b border-gray-800">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="font-bold text-white mb-4">Contact</h4>
+              <p className="text-gray-400 text-sm mb-2">+91-9441088587</p>
+              <p className="text-gray-400 text-sm">tmsreddysvu@gmail.com</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <h4 className="font-bold text-white mb-4">Location</h4>
+              <p className="text-gray-400 text-sm">Sri Venkateswara University</p>
+              <p className="text-gray-400 text-sm">Tirupati, India</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <h4 className="font-bold text-white mb-4">Links</h4>
+              <a href="https://scholar.google.com/citations?user=fDrpWdkAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" className="text-gray-400 text-sm hover:text-white transition-colors block mb-2">Google Scholar</a>
+              <a href="https://svuniversity.edu.in/college_of_science/dr-t-madhusudana-reddy-2" target="_blank" rel="noopener noreferrer" className="text-gray-400 text-sm hover:text-white transition-colors block">University Profile</a>
+            </motion.div>
+          </div>
           <div className="text-center">
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-gray-400 mb-2"
+              className="text-gray-400 text-sm"
             >
-              © {new Date().getFullYear()} Prof. T. Madhusudana Reddy. All rights reserved.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-gray-500 text-sm"
-            >
-              Electrochemical Research Laboratory | Sri Venkateswara University
+              © {new Date().getFullYear()} T. Madhusudana Reddy. All rights reserved.
             </motion.p>
           </div>
         </div>
